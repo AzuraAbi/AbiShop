@@ -2,8 +2,8 @@
 
 * {
     margin: 0;
-    padding: 0;
     border: 0;
+    padding: 0;
     box-sizing: border-box;
     font-family: "Varela Round", sans-serif;
     scroll-behavior: smooth;
@@ -12,10 +12,16 @@
 
 :root {
     --main-color: rgb(255, 103, 42);
+    --second-color: rgb(205, 94, 50);
+    --hover-color: rgb(135, 54, 24);
     --search-bar-btn-color: rgb(224, 224, 224);
     --search-bar-btn-hover: rgb(158, 158, 158);
-    --category-button-color: rgb(205, 94, 50);
-    --category-button-hover: rgb(135, 54, 24);
+    --dropbox-color: rgb(255, 255, 255);
+}
+
+body {
+    display: flex;
+    justify-content: center;
 }
 
 input:focus {
@@ -25,10 +31,11 @@ input:focus {
 /* PC */
 
 .navbar {
-    position: sticky;
+    position: fixed;
     background: var(--main-color);
     width: 100vw;
     height: 70px;
+    z-index: 20;
 }
 
 .navbar-content {
@@ -50,6 +57,7 @@ input:focus {
     display: flex;
     justify-content: center;
     align-items: center;
+    user-select: none;
 }
 
 .navbar-logo a {
@@ -70,7 +78,7 @@ input:focus {
 .navbar-logo a span {
     color: white;
     font-weight: 700;
-    font-size: 25px;
+    font-size: 20px;
     font-family: "Varela Round", sans-serif;
 }
 
@@ -84,7 +92,7 @@ input:focus {
     background: white;
     height: 70%;
     width: 600px;
-    border-radius: 20px;
+    border-radius: 50px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -119,10 +127,11 @@ input:focus {
     justify-content: center;
     align-items: center;
     height: 100%;
+    user-select: none;
 }
 
 .navbar-category .category-button {
-    background: var(--category-button-color);
+    background: var(--second-color);
     height: 70%;
     width: 150px;
     border-radius: 50px;
@@ -139,7 +148,7 @@ input:focus {
 }
 
 .category-button:hover {
-    background: var(--category-button-hover);
+    background: var(--hover-color);
 }
 
 .navbar-account {
@@ -148,12 +157,14 @@ input:focus {
     justify-content: center;
     width: 150px;
     height: 100%;
+    position: relative;
+    user-select: none;
 }
 
 .navbar-account .user-btn {
     margin-right: 10px;
-    height: 100%;
     width: 120px;
+    height: 100%;
     color: white;
     display: flex;
     align-items: center;
@@ -161,8 +172,18 @@ input:focus {
     transition: .2s ease;
 }
 
-.navbar-account .user-btn:hover {
-    background: var(--category-button-hover);
+.navbar-account .user-dropdown {
+    position: absolute;
+    margin-right: 10px;
+    width: 120px;
+    height: 100%;
+    top: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.navbar-account:hover .user-btn {
+    background: var(--hover-color);
 }
 
 .user-btn .user-name {
@@ -171,10 +192,145 @@ input:focus {
 
 .user-btn ion-icon {
     font-size: 40px;
+    margin-left: 10px;
+}
+
+.user-dropdown .navbar-account-drop {
+    display: block;
+}
+
+.navbar-account-drop ul {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    border-top: 0;
+}
+
+.navbar-account-drop ul li {
+    background: var(--hover-color);
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    transition: .2s ease;
+}
+
+.navbar-account-drop ul li:hover {
+    background: var(--second-color);
+}
+
+.user-dropdown .nologin {
+    display: none;
+}
+
+.user-dropdown .logged {
+    display: none;
+}
+
+.sale-banners {
+    margin-top: 70px;
+    background: transparent;
+    height: 400px;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+}
+
+.sale-banners .sale-content {
+    background: transparent;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.sale-content .sale-1 {
+    width: 600px;
+    height: 90%;
+    background: url(assets/banners/flashsale.webp);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border: 2px solid var(--main-color);
+}
+
+.sale-content .sale-2 {
+    background: transparent;
+    height: 90%;
+    margin-left: 20px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: space-between;
+}
+
+.sale-content .sale-2 .sale-2-item {
+    background: pink;
+    width: 100%;
+    height: 160px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border: 2px solid var(--main-color);
+}
+
+.sale-content .sale-2 .item-1 {
+    background: url(assets/banners/sale1.webp);
+}
+
+.sale-content .sale-2 .item-2 {
+    background: url(assets/banners/sale2.webp);
+    
 }
 
 /* Tablet */
 
+@media (min-width: 768px) and (max-width: 1024px) {
+
+    .navbar-search .searchbar {
+        width: 350px;
+    }
+
+    .navbar-account {
+        width: 100px;
+    }
+}
 
 
 /* Mobile */
+
+@media (max-width: 767px) {
+
+    .navbar-category {
+        display: none;
+    }
+
+    .navbar-account {
+        display: none;
+    }
+
+    .navbar-logo {
+        display: none;
+    }
+
+    .navbar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .navbar-search {
+        position: relative;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 95%;
+    }
+
+    .navbar-search .searchbar {
+        width: 100%;
+    }
+}
