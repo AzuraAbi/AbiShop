@@ -10,6 +10,10 @@
     text-decoration: none;
 }
 
+::-webkit-scrollbar {
+    display: none;
+}
+
 :root {
     --main-color: rgb(255, 103, 42);
     --second-color: rgb(205, 94, 50);
@@ -17,11 +21,20 @@
     --search-bar-btn-color: rgb(224, 224, 224);
     --search-bar-btn-hover: rgb(158, 158, 158);
     --dropbox-color: rgb(255, 255, 255);
+    --body-color: rgb(231, 231, 231);
+    --content-color: rgb(255, 255, 255);
+    --home-slide-margin-pc: -900px;
+    --home-slide-margin-tablet: -630px;
+    --home-slide-margin-mobile: -315px;
+    --sale-index: 0;
+    --danhmuc-bg-color: rgb(255, 255, 255);
 }
 
 body {
     display: flex;
     justify-content: center;
+    background: var(--body-color);
+    flex-wrap: wrap;
 }
 
 input:focus {
@@ -182,7 +195,7 @@ input:focus {
     justify-content: center;
 }
 
-.navbar-account:hover .user-btn {
+.user-btn:hover {
     background: var(--hover-color);
 }
 
@@ -230,61 +243,149 @@ input:focus {
 }
 
 .sale-banners {
-    margin-top: 70px;
-    background: transparent;
-    height: 400px;
-    display: flex;
     position: relative;
+    margin-top: 70px;
+    width: 100vw;
+    background: var(--content-color);
+    padding: 10px 0;
+    display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.sale-banners .sale-content {
+.sale-slides {
+    position: relative;
     background: transparent;
-    height: 100%;
+    width: 900px;
+    height: 500px;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
-.sale-content .sale-1 {
-    width: 600px;
-    height: 90%;
-    background: url(assets/banners/flashsale.webp);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    border: 2px solid var(--main-color);
-}
-
-.sale-content .sale-2 {
-    background: transparent;
-    height: 90%;
-    margin-left: 20px;
-    width: 400px;
+.sale-slides .slides {
+    border: 3px solid var(--main-color);
+    position: relative;
+    width: inherit;
+    height: inherit;
     display: flex;
-    flex-direction: column;
-    align-content: center;
-    justify-content: space-between;
+    overflow: hidden;
 }
 
-.sale-content .sale-2 .sale-2-item {
-    background: pink;
-    width: 100%;
-    height: 160px;
+.sale-slides .slides img {
+    width: inherit;
+    height: inherit;
+    position: relative;
     background-repeat: no-repeat;
-    background-size: cover;
     background-position: center;
-    border: 2px solid var(--main-color);
+    background-size: cover;
+    transition: .7s ease;
 }
 
-.sale-content .sale-2 .item-1 {
-    background: url(assets/banners/sale1.webp);
+.sale-slides .slide-btn {
+    position: absolute;
+    z-index: 2;
+    color: white;
+    background: var(--main-color);
+    opacity: .4;
+    box-shadow: 0px 0px 5px 1px var(--main-color);
+    border-radius: 50%;
+    width: 40px;
+    aspect-ratio: 1/1;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    transform-origin: center center;
+    transition: .2s ease;
+    user-select: none;
 }
 
-.sale-content .sale-2 .item-2 {
-    background: url(assets/banners/sale2.webp);
+.sale-slides .slide-btn:hover {
+    transform: scale(1.2);
+    opacity: 1;
+}
+
+.sale-slides .next-slide {
+    right: 15px;
+}
+
+.sale-slides .prev-slide {
+    left: 15px;
+}
+
+.sale-slides .slides .first {
+    margin-left: calc(var(--home-slide-margin-pc) * var(--sale-index));
+}
+
+.body-category {
+    position: relative;
+    margin-top: 40px;
+    background: var(--content-color);
+    width: 1200px;
     
 }
+
+.body-category h2 {
+    margin: 10px 0 0 20px;
+}
+
+.body-category .danhmuc-container {
+    margin-top: 10px;
+    width: 94%;
+    display: flex;
+    flex-wrap: wrap;
+    background: transparent;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.danhmuc-container .danhmuc-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 3px 1px black;
+    width: 120px;
+    height: 140px;
+    margin: 20px;
+    transform-origin: center center;
+    transition: .3s ease;
+}
+
+.danhmuc-item:hover {
+    transform: scale(1.03);
+}
+
+.danhmuc-item img {
+    width: 90%;
+    aspect-ratio: 1/1;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: .3s ease;
+}
+
+.danhmuc-item span {
+    color: black;
+    font-size: 15px;
+    font-weight: bold;
+    opacity: 0;
+    transition: .3s ease;
+}
+
+.danhmuc-container .danhmuc-item:hover img {
+    width: 95%;
+}
+
+.danhmuc-container .danhmuc-item:hover span {
+    opacity: 1;
+}
+
 
 /* Tablet */
 
@@ -297,8 +398,16 @@ input:focus {
     .navbar-account {
         width: 100px;
     }
-}
 
+    .sale-slides {
+        width: 630px;
+        height: 350px;
+    }
+
+    .sale-slides .slides .first {
+        margin-left: calc(var(--home-slide-margin-tablet) * var(--sale-index));
+    }
+}
 
 /* Mobile */
 
@@ -332,5 +441,19 @@ input:focus {
 
     .navbar-search .searchbar {
         width: 100%;
+    }
+
+    .sale-slides {
+        width: 315px;
+        height: 175px;
+    }
+
+    .sale-slides .slides .first {
+        margin-left: calc(var(--home-slide-margin-mobile) * var(--sale-index));
+    }
+
+    .sale-slides .slide-btn {
+        width: 30px;
+        font-size: 12px;
     }
 }
