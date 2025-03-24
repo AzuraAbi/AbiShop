@@ -35,7 +35,12 @@ body {
     display: flex;
     justify-content: center;
     background: var(--body-color);
-    flex-wrap: wrap;
+}
+
+.web-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 input:focus {
@@ -367,6 +372,7 @@ input:focus {
 
 .danhmuc-item:hover {
     transform: scale(1.1);
+    background: linear-gradient(rgb(220, 220, 220), rgb(255, 255, 255));
 }
 
 .danhmuc-item img {
@@ -421,7 +427,7 @@ input:focus {
     font-size: 15px;
     color: var(--main-color);
     font-weight: bold;
-    margin: 15px 10px 0 0;
+    margin: 15px 30px 0 0;
 }
 
 .flash-sale .flash-sale-display {
@@ -442,13 +448,18 @@ input:focus {
 
 .flash-sale-container .flash-sale-display-item {
     width: 215px;
-    background: content-box;
+    background: linear-gradient(var(--main-color), rgb(255, 255, 165));
     height: 100%;
     border-radius: 5px;
     box-shadow: var(--shadow);
     display: flex;
     flex-direction: column;
     align-items: center;
+    transition: .3s ease;
+}
+
+.flash-sale-container .flash-sale-display-item:hover {
+    transform: scale(1.05);
 }
 
 .flash-sale-display-item img {
@@ -464,24 +475,26 @@ input:focus {
     text-align: left;
     margin-top: 10px;
     width: 95%;
-    font-size: 25px;
+    height: 100px;
+    font-size: 22px;
     font-weight: bold;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
-.flash-sale-display-item .nguoiban {
-    text-align: left;
-    margin-top: 30px;
+.flash-sale-display-item .giacu {
+    text-align: right;
+    margin-top: 10px;
     width: 95%;
     font-size: 20px;
     color: var(--main-color);
+    text-decoration: line-through;
 }
 
 .flash-sale-display-item .giatien {
-    margin-top: 10px;
+    margin: 5px 0;
     width: 95%;
-    text-align: center;
+    text-align: right;
     color: var(--main-color);
     font-weight: bold;
     font-size: 25px;
@@ -513,6 +526,18 @@ input:focus {
 
     .danhmuc-container .danhmuc-item span {
         opacity: 1;
+    }
+
+    .flash-sale {
+        width: 900px;
+    }
+
+    .flash-sale-display-item:nth-child(3) {
+        display: none;
+    }
+
+    .flash-sale-display-item:nth-child(4) {
+        display: none;
     }
 }
 
@@ -551,8 +576,8 @@ input:focus {
     }
 
     .sale-slides {
-        width: 315px;
-        height: 175px;
+        width: 360px;
+        height: 200px;
     }
 
     .sale-slides .slides .first {
@@ -562,6 +587,10 @@ input:focus {
     .sale-slides .slide-btn {
         width: 30px;
         font-size: 12px;
+    }
+
+    .body-category {
+        width: 100vw;
     }
 
     .danhmuc-container .danhmuc-item span {
@@ -574,5 +603,25 @@ input:focus {
 
     .danhmuc-container .danhmuc-item {
         margin: 20px 40px;
+    }
+
+    .flash-sale {
+        width: 100vw;
+    }
+    
+    .flash-sale-display-item:nth-child(3) {
+        display: none;
+    }
+
+    .flash-sale-display-item:nth-child(4) {
+        display: none;
+    }
+
+    .flash-sale-display-item:nth-child(5) {
+        display: none;
+    }
+
+    .flash-sale-container .flash-sale-display-item {
+        width: 180px;
     }
 }
