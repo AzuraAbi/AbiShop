@@ -17,11 +17,14 @@
     --search-bar-btn-color: rgb(224, 224, 224);
     --search-bar-btn-hover: rgb(158, 158, 158);
     --dropbox-color: rgb(255, 255, 255);
+    --body-color: rgb(231, 231, 231);
+    --content-color: rgb(255, 255, 255);
 }
 
 body {
     display: flex;
     justify-content: center;
+    background: var(--body-color);
 }
 
 input:focus {
@@ -231,8 +234,8 @@ input:focus {
 
 .sale-banners {
     margin-top: 70px;
-    background: transparent;
-    height: 400px;
+    background: var(--content-color);
+    width: 100%;
     display: flex;
     position: relative;
     justify-content: center;
@@ -248,12 +251,13 @@ input:focus {
 
 .sale-content .sale-1 {
     width: 600px;
-    height: 90%;
+    height: 320px;
     background: url(assets/banners/flashsale.webp);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     border: 2px solid var(--main-color);
+    margin: 20px 0;
 }
 
 .sale-content .sale-2 {
@@ -272,9 +276,9 @@ input:focus {
     width: 100%;
     height: 160px;
     background-repeat: no-repeat;
-    background-size: cover;
     background-position: center;
     border: 2px solid var(--main-color);
+    margin: 20px 0;
 }
 
 .sale-content .sale-2 .item-1 {
@@ -288,6 +292,22 @@ input:focus {
 
 /* Tablet */
 
+@media (max-width: 1024px) {
+    .sale-banners .sale-content {
+        flex-direction: column;
+    }
+
+    .sale-content .sale-1 {
+        width: 600px;
+        height: 360px;
+        margin-top: 10px;
+    }
+    
+    .sale-content .sale-2 {
+        display: none;
+    }
+}
+
 @media (min-width: 768px) and (max-width: 1024px) {
 
     .navbar-search .searchbar {
@@ -297,6 +317,8 @@ input:focus {
     .navbar-account {
         width: 100px;
     }
+
+
 }
 
 
@@ -332,5 +354,11 @@ input:focus {
 
     .navbar-search .searchbar {
         width: 100%;
+    }
+    
+    .sale-content .sale-1 {
+        width: 300px;
+        aspect-ratio: 5 / 3;
+        margin-top: 10px;
     }
 }
