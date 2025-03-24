@@ -28,6 +28,7 @@
     --home-slide-margin-mobile: -315px;
     --sale-index: 0;
     --danhmuc-bg-color: rgb(255, 255, 255);
+    --shadow: 0 0 3px 1px black;
 }
 
 body {
@@ -247,7 +248,7 @@ input:focus {
     margin-top: 70px;
     width: 100vw;
     background: var(--content-color);
-    padding: 10px 0;
+    padding: 20px 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -328,14 +329,21 @@ input:focus {
 }
 
 .body-category h2 {
-    margin: 10px 0 0 20px;
+    display: flex;
+    align-items: center;
+    margin: 20px 0 0 20px;
+    color: rgb(89, 89, 89);
+}
+.body-category h2 ion-icon {
+    margin-right: 5px;
 }
 
 .body-category .danhmuc-container {
     margin-top: 10px;
     width: 94%;
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
     background: transparent;
     position: relative;
     left: 50%;
@@ -358,7 +366,7 @@ input:focus {
 }
 
 .danhmuc-item:hover {
-    transform: scale(1.03);
+    transform: scale(1.1);
 }
 
 .danhmuc-item img {
@@ -386,7 +394,98 @@ input:focus {
     opacity: 1;
 }
 
+.flash-sale {
+    margin-top: 40px;
+    background: var(--content-color);
+    width: 1200px;
+}
 
+.flash-sale-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.flash-sale .flash-sale-head h2 {
+    color: var(--main-color);
+    font-size: 30px;
+    margin: 20px 0 0 30px;
+    font-weight: bold;
+}
+
+.flash-sale .flash-sale-head h2 ion-icon {
+    margin-right: 10px;
+}
+
+.flash-sale-head a {
+    font-size: 15px;
+    color: var(--main-color);
+    font-weight: bold;
+    margin: 15px 10px 0 0;
+}
+
+.flash-sale .flash-sale-display {
+    width: 100%;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flash-sale-display .flash-sale-container {
+    background: transparent;
+    width: 95%;
+    height: 370px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.flash-sale-container .flash-sale-display-item {
+    width: 215px;
+    background: content-box;
+    height: 100%;
+    border-radius: 5px;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.flash-sale-display-item img {
+    width: 90%;
+    aspect-ratio: 1/1;
+    margin-top: 5px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.flash-sale-display-item .tensanpham {
+    text-align: left;
+    margin-top: 10px;
+    width: 95%;
+    font-size: 25px;
+    font-weight: bold;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.flash-sale-display-item .nguoiban {
+    text-align: left;
+    margin-top: 30px;
+    width: 95%;
+    font-size: 20px;
+    color: var(--main-color);
+}
+
+.flash-sale-display-item .giatien {
+    margin-top: 10px;
+    width: 95%;
+    text-align: center;
+    color: var(--main-color);
+    font-weight: bold;
+    font-size: 25px;
+}
 /* Tablet */
 
 @media (min-width: 768px) and (max-width: 1024px) {
@@ -406,6 +505,14 @@ input:focus {
 
     .sale-slides .slides .first {
         margin-left: calc(var(--home-slide-margin-tablet) * var(--sale-index));
+    }
+
+    .body-category {
+        width: 900px;
+    }
+
+    .danhmuc-container .danhmuc-item span {
+        opacity: 1;
     }
 }
 
@@ -455,5 +562,17 @@ input:focus {
     .sale-slides .slide-btn {
         width: 30px;
         font-size: 12px;
+    }
+
+    .danhmuc-container .danhmuc-item span {
+        opacity: 1;
+    }
+
+    .body-category .danhmuc-container {
+        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    }
+
+    .danhmuc-container .danhmuc-item {
+        margin: 20px 40px;
     }
 }
