@@ -390,7 +390,7 @@ input:focus {
     font-weight: bold;
     opacity: 0;
     transition: .3s ease;
-}
+} 
 
 .danhmuc-container .danhmuc-item:hover img {
     width: 95%;
