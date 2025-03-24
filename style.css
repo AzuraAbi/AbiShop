@@ -336,7 +336,7 @@ input:focus {
 .body-category h2 {
     display: flex;
     align-items: center;
-    margin: 20px 0 0 20px;
+    margin: 20px 0 0 25px;
     color: rgb(89, 89, 89);
 }
 .body-category h2 ion-icon {
