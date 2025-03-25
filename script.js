@@ -2,6 +2,8 @@ const sale_next_button = document.getElementById('sale-next')
 const sale_prev_button = document.getElementById('sale-prev')
 const sale_slides = document.getElementById('sale-slides')
 
+const user_buttons = document.getElementsByClassName('user-btn')
+
 var current_sale_index = 0
 const min_sale_index = 0
 const max_sale_index = 2
@@ -46,6 +48,15 @@ sale_prev_button.addEventListener('click', () => {
     update_sales()
 })
 
+for(let btn = 0; btn < user_buttons.length; btn++) {
+    btn.addEventListener('mouseenter', () => {
+
+    })
+
+    btn.addEventListener('mouseleave', () => {
+        
+    })
+}
 
 setInterval(() => {
     if(debounce == true) return
